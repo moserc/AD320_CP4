@@ -1,47 +1,46 @@
-# *FILL IN NAME* API Documentation
-*Fill in a short description here about the API's purpose.*
+# *Moss Quotes* API Documentation
+Provides Maurice Moss (The IT Crowd) quotes searchable by topic. 
 
-## *Fill in Endpoint 1 Title*
-**Request Format:** *Fill in example request format*
+## Get a list of Moss quotes by topic.
+**Request Format:** /topics
 
-**Request Type:** *Fill in request type*
+**Request Type:** GET
 
 **Returned Data Format**: Plain Text
 
-**Description:** *Fill in description*
+**Description:** Return a list of all quote topics that you can look up in this API.
 
 
-**Example Request:** *Fill in example request*
+**Example Request:** /topics
 
 **Example Response:**
-*Fill in example response in the ticks*
 
 ```
-
+computers, fashion, football, sass
 ```
 
 **Error Handling:**
-*Fill in an example of the error handling*
+N/A
 
-## *Fill in Endpoint 2 Title*
-**Request Format:** *Fill in example request format*
+## Find a Moss quote.
+**Request Format:** /:topic
 
-**Request Type:** *Fill in request type*
+**Request Type:** GET
 
 **Returned Data Format**: JSON
 
-**Description:** *Fill in description*
+**Description:** Returns a Maurice Moss quote associated with the given topic.
 
-**Example Request:** *Fill in example request*
+**Example Request:** /fashion
 
 **Example Response:**
-*Fill in example response in the {}*
 
 ```json
 {
-
+    "quote": "I like being weird. Weird's all I've got. That and my sweet style."
 }
 ```
 
 **Error Handling:**
-*Fill in an example of the error handling*
+Possible 400 (invalid request) errors (plain text):
+  - On invalid entry, returns an error with the message: 'error': 'unable to find topic.'
