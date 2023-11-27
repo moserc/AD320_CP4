@@ -42,5 +42,6 @@ N/A
 ```
 
 **Error Handling:**
-Possible 400 (invalid request) errors (plain text):
-  - On invalid entry, returns an error with the message: 'error': 'unable to find topic.'
+Possible 400 (invalid request) errors (json):
+  - On invalid entry, returns an error with the json object:
+      {'error': 'Unable to find topic. Check spelling. Entries should be all lowercase.'}
