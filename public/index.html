@@ -23,9 +23,15 @@
             </hgroup>
         </section>
 
-        <section id = "entry">
-            <label for="topic">Enter a topic: </label>
-            <input name="topic" id="topic" type="text" pattern="[a-z]" required>
+        <section id="entry">
+            <label for="topic" id="topic_select">Enter a topic: </label>
+            <select name="topic" id="topic">
+                <option value="">--Pick a topic--</option>
+                <option value="computers">computers</option>
+                <option value="fashion">fashion</option>
+                <option value="football">football</option>
+                <option value="sass">sass</option>
+            </select>
             <button id = "quote">What did he say?</button>
             <button id = "list">Get topic list</button>
         </section>

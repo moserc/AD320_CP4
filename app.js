@@ -14,28 +14,37 @@ const app = express();
 
 app.use(cors());
 
+//error constants
+let BAD_REQUEST = 400;
+
 //define topics and quotes
 let topics = ['computers', 'fashion', 'football', 'sass'];
 let computers = [
-    {'quote' : "Memory -is- RAM!"},
-    {'quote' : "Hello, IT... Have you tried forcing an unexpected reboot?"}
+    {'quote' : '"Memory -is- RAM!"'},
+    {'quote' : '"Hello, IT... Have you tried forcing an unexpected reboot?"'},
+    {'quote' : '"What kind of operating system does it use?" Police: "Vista!" Moss: "We\'re going to die!"'}
 ];
 
 let fashion = [
-    {'quote' : "I like being weird. Weird\'s all I've got. That and my sweet style."}
+    {'quote' : '"I like being weird. Weird\'s all I\'ve got. That and my sweet style."'},
+    {'quote' : '"Let me put on my slightly larger glasses."'},
+    {'quote' : 'Coworker: "I like your glasses." Moss: "Thank you, they\re not for sale."'}
 ];
 
 let football = [
-    {'quote' : "Did you see that ludicrous display last night?"}
+    {'quote' : '"Did you see that ludicrous display last night?"'},
+    {'quote' : '"Hooray. He\'s kicked the ball. Now the ball\'s over there. That man '+
+        'has it now. That\'s an interesting development. Maybe he\'ll kick the ball. '+
+        'He has indeed and apparently that deserves a round of applause."'}
 ];
 
 let sass = [
-    {'quote' : "Prepare to put mustard on those words, for you will soon be consuming them "+
-        "along with this slice of humble pie that comes direct from the oven of shame, set at "+
-        "gas mark 'egg on your face'."}, 
-    {'quote' : "You'd best put seat belts on your ears, Roy, 'cause I'm about to take them for "+
-        "the ride of their lives!"},
-    {'quote' : "I came here to drink milk and kick ass, and I've just finished my milk."}
+    {'quote' : '"Prepare to put mustard on those words, for you will soon be consuming them '+
+        'along with this slice of humble pie that comes direct from the oven of shame, set at '+
+        'gas mark \'egg on your face\'."'}, 
+    {'quote' : '"You\'d best put seat belts on your ears, Roy, \'cause I\'m about to take them for '+
+        'the ride of their lives!"'},
+    {'quote' : '"I came here to drink milk and kick ass, and I\'ve just finished my milk."'}
 ];
 
 /**
@@ -61,21 +70,20 @@ app.get('/:topic', async function(req, res) {
     let topic = req.params.topic;
     let quote = '';
 
-    try {
-        if (topic === 'computers'){
-            quote = computers[Math.floor(Math.random() * computers.length)];
-        }else if (topic === 'fashion'){
-            quote = fashion[Math.floor(Math.random() * fashion.length)];
-        }else if (topic === 'football'){
-            quote = football[Math.floor(Math.random() * football.length)];
-        }else if (topic === 'sass'){
-            quote = sass[Math.floor(Math.random() * sass.length)];
-        }
-    } catch (error) {
-        res.status(400).send({'error': 'Unable to find topic. Check spelling. Entries should be all lowercase.'});
+    if (topic === 'computers'){
+        quote = computers[Math.floor(Math.random() * computers.length)];
+    }else if (topic === 'fashion'){
+        quote = fashion[Math.floor(Math.random() * fashion.length)];
+    }else if (topic === 'football'){
+        quote = football[Math.floor(Math.random() * football.length)];
+    }else if (topic === 'sass'){
+        quote = sass[Math.floor(Math.random() * sass.length)];
+    }else{
+        res.status(BAD_REQUEST).json({
+            'error': 'Unable to find topic. Check spelling. Entries should be all lowercase.'
+        });
         console.log('error');
     }
-
     res.type('json').send(quote);
     console.log('quote sent');
 });

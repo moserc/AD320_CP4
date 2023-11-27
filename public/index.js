@@ -61,7 +61,8 @@
   function processTopic(data){
     console.log('Data received: '+data);
     let paragraph = gen('p');
-    paragraph.textContent = ' || ' + data.split(' ').join(' || ');
+    
+    paragraph.textContent = ' | ' + data.split(' ').join(' | ');
     id('result').appendChild(paragraph);
     console.log('Data processed and appended to result section: '+paragraph.textContent);
   }
@@ -72,7 +73,7 @@
    */
   function processQuote(data){
     let paragraph = gen('p');
-    paragraph.textContent = '"' + data.quote + '"';
+    paragraph.textContent = data.quote;
     id('result').appendChild(paragraph);
   }
 
