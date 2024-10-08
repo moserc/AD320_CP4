@@ -11,7 +11,7 @@
     "call-bind": "^1.0.5",
     "content-disposition": "^0.5.4",
     "content-type": "^1.0.5",
-    "cookie": "^0.5.0",
+    "cookie": ">=0.7.0",
     "cookie-signature": "^1.0.6",
     "cors": "^2.8.5",
     "debug": "^2.6.9",
@@ -69,7 +69,8 @@
     "vary": "^1.1.2"
   },
   "devDependencies": {
-    "send": ">=0.19.0"
+    "send": ">=0.19.0",
+    "cookie": ">=0.7.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
